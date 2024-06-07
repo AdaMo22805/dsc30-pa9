@@ -49,9 +49,24 @@ public class Worksheet {
      * @return arrayList consisting HuffmanNodes, where each node stores info about an encoded character
      */
     public static ArrayList<HuffmanNode> q1aEncodeChar(){
-        /*TODO: insert nodes into an ArrayList, where each node stores the frequency and path of a character */
         ArrayList<HuffmanNode> nodeList = new ArrayList<HuffmanNode>();
         //Example code on adding nodes: nodeList.add(new HuffmanNode('p', 2, "0001"));
+        nodeList.add(new HuffmanNode('0', 1, "10010"));
+        nodeList.add(new HuffmanNode('1', 1, "10011"));
+        nodeList.add(new HuffmanNode('2', 1, "10100"));
+        nodeList.add(new HuffmanNode('4', 1, "10101"));
+        nodeList.add(new HuffmanNode('5', 1, "11000"));
+        nodeList.add(new HuffmanNode('6', 1, "11001"));
+        nodeList.add(new HuffmanNode('c', 1, "11010"));
+        nodeList.add(new HuffmanNode('d', 1, "11011"));
+        //
+        nodeList.add(new HuffmanNode('s', 1, "1000"));
+        nodeList.add(new HuffmanNode('3', 2, "1011"));
+        //
+        nodeList.add(new HuffmanNode('\n', 5, "111"));
+        //
+        nodeList.add(new HuffmanNode('A', 6, "00"));
+        nodeList.add(new HuffmanNode('P', 6, "01"));
         return nodeList;
     }
 
@@ -60,9 +75,21 @@ public class Worksheet {
      * @return arrayList consisting HuffmanNodes, where each node stores info about an encoded character
      */
     public static ArrayList<HuffmanNode> q1bEncodeChar(){
-        /*TODO: insert nodes into an ArrayList, where each node stores the frequency and path of a character */
         ArrayList<HuffmanNode> nodeList = new ArrayList<HuffmanNode>();
         //Example code on adding nodes: nodeList.add(new HuffmanNode('p', 2, "0001"));
+        nodeList.add(new HuffmanNode('T', 1, "0110"));
+        nodeList.add(new HuffmanNode('d', 1, "0111"));
+        nodeList.add(new HuffmanNode('e', 1, "1000"));
+        nodeList.add(new HuffmanNode('i', 1, "1001"));
+        nodeList.add(new HuffmanNode('m', 1, "1010"));
+        nodeList.add(new HuffmanNode('o', 1, "1011"));
+        nodeList.add(new HuffmanNode('s', 1, "1100"));
+        nodeList.add(new HuffmanNode('u', 1, "1101"));
+        //
+        nodeList.add(new HuffmanNode('y', 1, "000"));
+        nodeList.add(new HuffmanNode(' ', 2, "001"));
+        nodeList.add(new HuffmanNode('!', 2, "010"));
+        nodeList.add(new HuffmanNode('t', 2, "111"));
         return nodeList;
     }
 
@@ -74,6 +101,26 @@ public class Worksheet {
         /*TODO: insert BNodes into a nodeList, where each node stores the data and path of a character */
         ArrayList<BNode> nodeList = new ArrayList<BNode>();
         //example of adding nodes to nodeList : nodeList.add(new BNode(Arrays.asList(17,24)));
+        //leaf nodes
+        nodeList.add(new BNode(Arrays.asList(12, 23, 26)));
+        nodeList.add(new BNode(Arrays.asList(41, 44, 50)));
+        nodeList.add(new BNode(Arrays.asList(65)));
+        nodeList.add(new BNode(Arrays.asList(69)));
+        nodeList.add(new BNode(Arrays.asList(93, 95, 98)));
+        //internal nodes
+        nodeList.add(new BNode(Arrays.asList(34, 51)));
+        nodeList.add(new BNode(Arrays.asList(88)));
+        nodeList.add(new BNode(Arrays.asList(67)));
+        //root to children
+        nodeList.get(7).addChildren(nodeList.get(5));
+        nodeList.get(7).addChildren(nodeList.get(6));
+        //connect [34, 51] with children
+        nodeList.get(5).addChildren(nodeList.get(0));
+        nodeList.get(5).addChildren(nodeList.get(1));
+        nodeList.get(5).addChildren(nodeList.get(2));
+        //connect [88] with children
+        nodeList.get(6).addChildren(nodeList.get(3));
+        nodeList.get(6).addChildren(nodeList.get(4));
         return nodeList;
 
     }
