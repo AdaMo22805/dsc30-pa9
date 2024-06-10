@@ -8,8 +8,8 @@ import java.util.*;
 /**
  * TODO
  *
- * @author TODO
- * @since TODO
+ * @author Ada Mo
+ * @since June 9, 2024
  */
 
 public class Tasks {
@@ -20,7 +20,13 @@ public class Tasks {
      * @return
      */
     public static boolean raffleChecker(int[] entries) {
-        // TODO
+        HashMap<Integer, Boolean> hashMap = new HashMap<>();
+        for (int i = 0; i < entries.length; i++) {
+            if (hashMap.containsKey(entries[i])) {
+                return true; // Duplicate found
+            }
+            hashMap.put(entries[i], true); //if duplicate not found, add to hash map
+        }
         return false;
     }
 
@@ -39,7 +45,11 @@ public class Tasks {
      * @return
      */
     public static String middleNode(Node head) {
-        // TODO
+        Node curr = head;
+        if (!curr.name.enull){
+            int size = 1;
+        }
+
         return null;
     }
 
@@ -65,5 +75,9 @@ public class Tasks {
         return null;
     }
 
+    public static void main(String[] args){
+        int[] entries = {123, 456, 789, 123, 999, 888};
+        System.out.print(raffleChecker(entries));
+    }
 
 }
