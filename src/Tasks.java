@@ -1,6 +1,6 @@
 /*
- * Name: TODO
- * PID: TODO
+ * Name: Ada Mo
+ * PID: A18114308
  */
 
 import java.util.*;
@@ -16,6 +16,7 @@ public class Tasks {
 
     /**
      * TODO: Question A
+     *
      * @param entries
      * @return
      */
@@ -34,6 +35,7 @@ public class Tasks {
     public static class Node {
         Node next;
         String name;
+
         public Node(String name) {
             this.name = name;
         }
@@ -41,43 +43,125 @@ public class Tasks {
 
     /**
      * TODO: Question B
+     *
      * @param head
      * @return
      */
     public static String middleNode(Node head) {
-        Node curr = head;
-        if (!curr.name.enull){
-            int size = 1;
+        Node middle = head; //pointer to find middle
+        Node end = head; //pointer goes to end
+        if (head == null) { //return null is SLL is empty
+            return null;
         }
-
-        return null;
+        if (head.next == null) { //return head if SLL only has one element
+            return head.name;
+        }
+        while (end.next != null) { //iterate until end point finds end and middle pointer will point to middle
+            middle = middle.next; //iterate by 1
+            end = end.next.next; //iterate by 2
+        }
+        return middle.name;
     }
 
     /**
      * TODO: Question C
+     *
      * @param newMessage
      * @param oldMessage
      * @return
      */
     public static boolean canConstruct(String newMessage, String oldMessage) {
-       // TODO
-        return false;
+        HashMap<Character, Integer> hashMap = new HashMap<>();
+        if (newMessage.length() > oldMessage.length()) { //if new longer than old then for sure false
+            return false;
+        }
+        for (int i = 0; i < oldMessage.length(); i++) {
+            char currChar = oldMessage.charAt(i);
+            if (!hashMap.containsKey(currChar)) { //if char not in hash map yet
+                hashMap.put(currChar, 1);
+            } else {
+                hashMap.put(currChar, hashMap.get(currChar) + 1);
+            }
+            //add to frequency of char if already in hash map
+        }
+
+        for (int j = 0; j < newMessage.length(); j++) {
+            char currChar = newMessage.charAt(j);
+            if (!hashMap.containsKey(currChar)) { //if char not in old's hash map
+                return false;
+            } else {
+                if (hashMap.get(currChar) > 0) { //if frequency of letter > 0
+                    hashMap.put(currChar, hashMap.get(currChar) - 1);
+                } else {
+                    return false; //if frequency of letter = 0
+                }
+            }
+        }
+        return true;
     }
 
-    /**TODO:
+    /**
+     * TODO:
      * Question D
+     *
      * @param buyers
      * @param k
      * @return
      */
     public static String[] frequentCustomers(String[] buyers, int k) {
-        // TODO
-        return null;
+        String[] kLoyal = new String[k];
+        HashMap<String, Integer> customerCount = new HashMap<>();
+        for (int i = 0; i < buyers.length; i++) { //assign each customer a frequency count
+            String currCustomer = buyers[i];
+            if (!customerCount.containsKey(currCustomer)) {
+                customerCount.put(currCustomer, 1);
+            } else {
+                customerCount.put(currCustomer, customerCount.get(currCustomer) + 1);
+            }
+        }
+
+        for (int j = 0; j < k; j++) { //find max k times
+            String loyalCustomer = null;
+            int max = 0;
+            for (String i : customerCount.keySet()) {
+                int currCount = customerCount.get(i);
+                if (currCount > max || loyalCustomer == null) {
+                    max = currCount;
+                    loyalCustomer = i;
+                }
+            }
+            customerCount.put(loyalCustomer, -1); //once largest is found, set frequency to -1 so no longer max frequency
+            kLoyal[j] = loyalCustomer;
+        }
+        return kLoyal;
     }
 
-    public static void main(String[] args){
-        int[] entries = {123, 456, 789, 123, 999, 888};
-        System.out.print(raffleChecker(entries));
-    }
-
+//    public static void main(String[] args) {
+//        int[] entries = {123, 456, 789, 123, 999, 888};
+//        System.out.print(raffleChecker(entries));
+//        Node panda1 = new Node ("Panda1");
+//        Node panda2 = new Node ("Panda2");
+//        Node panda3 = new Node ("Panda3");
+//        Node panda4 = new Node ("Panda4");
+//        Node panda5 = new Node ("Panda5");
+//        Node panda6 = new Node ("Panda6");
+//        Node panda7 = new Node ("Panda7");
+//        Node panda8 = new Node ("Panda8");
+//        Node panda9 = new Node ("Panda9");
+//        panda1.next = panda2;
+//        panda2.next = panda3;
+//        panda3.next = panda4;
+//        panda4.next = panda5;
+//        panda5.next = panda6;
+//        panda6.next = panda7;
+//        panda7.next = panda8;
+//        panda8.next = panda9;
+//        System.out.print(middleNode(panda1));
+//        System.out.print(canConstruct("PANDAS", "PSAND"));
+//        String[] buyers = new String[]{"CustomerB", "CustomerB", "CustomerB", "CustomerA", "CustomerC", "CustomerD", "CustomerA", "CustomerD"};
+//        for (int i = 0; i < frequentCustomers(buyers, 3).length; i++) {
+//            System.out.println(frequentCustomers(buyers, 3)[i]);
+//        }
+//    }
 }
+
