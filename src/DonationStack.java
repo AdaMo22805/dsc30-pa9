@@ -16,11 +16,18 @@ public class DonationStack {
     private Stack<Integer> stack;
     private Stack<Integer> maxStack;
 
+    /**
+     * constructor
+     */
     public DonationStack() {
         stack = new Stack<>();
         maxStack = new Stack<>();
     }
 
+    /**
+     * add element into stack
+     * @param val an integer indicating donated value
+     */
     public void push(int val) {
         stack.push(val);
         if (stack.size() == 1 || val > maxStack.peek()){ //if first element/new max --> add to maxStack
@@ -30,15 +37,27 @@ public class DonationStack {
         }
     }
 
+    /**
+     * find the element on top of the stack
+     * @return top element in stack
+     */
     public int peek() {
         return stack.peek();
     }
 
+    /**
+     * remove top element
+     * @return top element in stack
+     */
     public int pop() {
         maxStack.pop();
         return stack.pop();
     }
 
+    /**
+     * find current max value in stack
+     * @return max value in stack
+     */
     public int max() {
         return maxStack.peek();
     }

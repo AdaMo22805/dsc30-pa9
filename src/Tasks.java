@@ -15,10 +15,10 @@ import java.util.*;
 public class Tasks {
 
     /**
-     * TODO: Question A
+     * check if duplicates entries exists
      *
-     * @param entries
-     * @return
+     * @param entries an integer array of customer IDs
+     * @return true if there are duplicates, else false
      */
     public static boolean raffleChecker(int[] entries) {
         HashMap<Integer, Boolean> hashMap = new HashMap<>();
@@ -42,10 +42,10 @@ public class Tasks {
     }
 
     /**
-     * TODO: Question B
+     * find the middle node of a Singly Linked List
      *
-     * @param head
-     * @return
+     * @param head the first node of the SLL
+     * @return the middle node
      */
     public static String middleNode(Node head) {
         Node middle = head; //pointer to find middle
@@ -64,11 +64,11 @@ public class Tasks {
     }
 
     /**
-     * TODO: Question C
+     * check if a new message can be created from an old message
      *
-     * @param newMessage
-     * @param oldMessage
-     * @return
+     * @param newMessage a new string message
+     * @param oldMessage an old string message
+     * @return true if new message can be constructed from old message, else false
      */
     public static boolean canConstruct(String newMessage, String oldMessage) {
         HashMap<Character, Integer> hashMap = new HashMap<>();
@@ -101,12 +101,11 @@ public class Tasks {
     }
 
     /**
-     * TODO:
-     * Question D
+     * find k most frequent customers
      *
-     * @param buyers
-     * @param k
-     * @return
+     * @param buyers a string array of all buyers
+     * @param k an integer indicating how many most frequent buyers we are looking for
+     * @return a string array of k most frequent buyers
      */
     public static String[] frequentCustomers(String[] buyers, int k) {
         String[] kLoyal = new String[k];
