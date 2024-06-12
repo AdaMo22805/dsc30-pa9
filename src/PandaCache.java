@@ -28,7 +28,7 @@ public class PandaCache {
          * @param pandaID integer storing panda IDs
          * @param zoneNumber integer storing the zone a panda is in
          */
-        protected pandaNode (int pandaID, int zoneNumber) {
+        public pandaNode (int pandaID, int zoneNumber) {
             this.pandaID = pandaID;
             this.zoneNumber = zoneNumber;
         }
